@@ -74,7 +74,7 @@ classificaTriangulo()
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    
 }
 
 // EXERCÍCIO 11
@@ -112,6 +112,14 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
+    consultas.sort((a, b) =>{
+        if(a.nome < b.nome){
+            return -1
+        } else{
+            return 0
+        }
+    })
+    return consultas
 }
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
