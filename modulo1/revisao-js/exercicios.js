@@ -74,8 +74,22 @@ classificaTriangulo()
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+       array.sort(function(a, b){
+            return a - b
+        })
     
+        let novaArray = [array[0]]
+        let resultado = []
+    
+        for(let i = 1; i < array.length; i++){
+            if(array[i - 1] !== array[i]){
+                novaArray.push(array[i])
+            }
+        }
+        resultado.push( novaArray[novaArray.length - 2], novaArray[1])
+        return resultado
 }
+
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
@@ -106,22 +120,31 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 retornaPessoasNaoAutorizadas()
 
 // EXERCÍCIO 14
+/* 
+1- Somar valores de "compras" = "somaCompras";
+2- Subtrair "saldoTotal" - "somaCompras";
+3- Retornar mesma array com "saldoTotal" atualizado
+*/
+// soma array "compras"
 function retornaContasComSaldoAtualizado(contas) {
-
+    return contas[0].compras.reduce(function(soma, i){
+        return soma + i
+    })
 }
-
+retornaContasComSaldoAtualizado()
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-    consultas.sort((a, b) =>{
+   consultas.sort((a, b) => {
         if(a.nome < b.nome){
             return -1
-        } else{
+        }else{
             return 0
         }
-    })
-    return consultas
+   })
+return consultas
 }
+retornaArrayOrdenadoAlfabeticamente()
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+  
 }
