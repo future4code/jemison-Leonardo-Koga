@@ -1,0 +1,12 @@
+Os 7 passos fundamentais são:
+1- Ter atenção no enunciado;
+2- Retirar informações relevantes;
+3- Pensar Entradas e saídas;
+4- Fazer um esquema visual;
+5- Criar código feio;
+6- Testar força-bruta
+7- Refatorar
+
+Vejo os 7 passos fundamentais como algo que já usamos com os problemas que acontecem na nossa vida, e não só na programação. O fato de termos de entender, pensar em uma ação, tentar um resolução e depois de resolvido ainda ver que poderia ter resolvido de uma maneira mais fácil, resume a resolução de problemas na vida.
+Mais voltando a programação.
+Esta aula me ajudou a colocar as idéias no lugar. Porque fazendo o projeto de revisão entendi que tinha compreendido toda a matéria e os exercícios que eram passados para podermos praticar, uma matéria/ exercício de cada vez. Mais quando tive que colocar o conhecimento adquirido, tendo que escolher a lógica que iria usar e misturar todo conhecimento, a cabeça deu um bug, e vejo que através dos 7 passos posso organização minhas idéias e testar todo meu conhecimento de forma organizada.
