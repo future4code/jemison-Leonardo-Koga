@@ -120,18 +120,10 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 retornaPessoasNaoAutorizadas()
 
 // EXERCÍCIO 14
-/* 
-1- Somar valores de "compras" = "somaCompras";
-2- Subtrair "saldoTotal" - "somaCompras";
-3- Retornar mesma array com "saldoTotal" atualizado
-*/
-// soma array "compras"
 function retornaContasComSaldoAtualizado(contas) {
-    return contas[0].compras.reduce(function(soma, i){
-        return soma + i
-    })
+ 
 }
-retornaContasComSaldoAtualizado()
+
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
    consultas.sort((a, b) => {
