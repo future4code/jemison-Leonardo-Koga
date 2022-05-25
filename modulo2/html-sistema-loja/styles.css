@@ -1,0 +1,102 @@
+header{
+    background-image:url('index.html');
+}
+
+p{
+    color: black;
+}
+
+footer{
+    display: inline;
+}
+
+a{
+    margin-top: 5px;
+    margin-bottom: 6px;
+    margin-left: 120px;
+    margin-right: 10px;
+    color: black;
+}
+
+#logo{
+    margin: auto;
+    display: block;
+}
+
+main{
+    margin-top: 30px;
+}
+
+#desconto{
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+    background-color: rgb(65, 51, 156);
+    background-image: linear-gradient( to right, red, transparent, blue ); 
+}
+
+#redesociais{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 27px;
+    color: white;
+    padding: 10px;
+    background-color: rgb(65, 51, 156);
+    background-image: linear-gradient( to right, red, transparent, blue ); 
+}
+
+ol{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+form{
+    color:black;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+tr{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin-left: 30px;
+}
+
+td{
+    text-align: center;
+}
+
+#facebook{
+    margin-right: 10px;
+}
+
+#instagram{
+    margin-right: 10px;
+}
+
+ul{
+    font-size: 25px;
+    margin-left: 20px;
+}
+#adicionar{
+    margin-top: 13px;
+}
+
+#pesquisar{
+    margin-top: 13px;
+}
+
+table{
+    margin-bottom: 20px;
+}

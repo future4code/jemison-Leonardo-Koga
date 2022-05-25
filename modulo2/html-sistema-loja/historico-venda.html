@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Historico Vendas</title>
+</head>
+<body>
+
+    <header>
+        <img id="logo" src="img/logo_lojao.png" alt="logo Lojão do Brás" height="150">
+    </header>
+    
+    <nav>
+        <a href="index.html">Página Inicial</a>
+        <a href="ctrl-estoque.html">Controle de Estoque</a>
+        <a href="add-produto.html">Adicionar Produto</a>
+        <a href="funcionarios.html">Funcionários</a>
+        <a href="pag-venda.html">Vendas</a>
+        <a href="historico-venda.html">Histórico de Vendas</a>
+    </nav>
+
+    <h2>Histórico de Vendas</h2>
+
+    <table>
+        <tr>
+            <th>Horário</th>
+            <th>Funcionário</th>
+            <th>Valor Total(R$)</th>
+            <th>Forma de Pagamento</th>
+        </tr>
+
+        <tr>
+            <td>10:47hrs</td>
+            <td>Ana Julia</td>
+            <td>150,00</td>
+            <td>Dinheiro</td>
+        </tr>
+
+        <tr>
+            <td>12:30hrs</td>
+            <td>Isabela</td>
+            <td>200,00</td>
+            <td>Cartão</td>
+        </tr>
+
+        <tr>
+            <td>15:33hrs</td>
+            <td>Guilherme</td>
+            <td>303,00</td>
+            <td>Dinheiro</td>
+        </tr>
+
+        <tr>
+            <td>17:30hrs</td>
+            <td>Ana Julia</td>
+            <td>123,00</td>
+            <td>Cartão</td>
+        </tr>
+
+        
+    </table>
+    
+    <form action="">
+ 
+        <label for="filtro">Filtro por data: </label>
+        <input type="text" id="filtro" name="filtro">
+        <br>
+    </form>
+
+    <button id="pesquisar" type="submit">Pesquisar</button>
+
+</body>
+</html>
