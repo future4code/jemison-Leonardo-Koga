@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#imagem-logo{
+    height: 20px;
+}
+
+header{
+    display: flex;
+    background: mediumvioletred;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo-esquerda{
+
+}
+
+#confeitaria{
+    font-weight: bold;
+}
+
+.principal{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    height: 500px;
+    width: 80%;
+}
+
+.bolo{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.delicioso{
+    font-size: 12px;
+    flex-wrap: wrap;
+}
+
+.sombra{
+    width: 220px;
+    height: 220px;
+    background: darkgray;}
+
+.sombra img{
+    position: relative;
+    top: -3px;
+    left: -3px;}
+    
+
+.menu{
+    height: 683px;
+    width: 20%;
+    background: #f2d0e0;
+}
+
+.menu-esquerda{
+    
+}
+
+.home{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#casinha{
+    height: 15px;
+}
+
+#produto{
+    height: 15px;
+}
+
+#carrinho{
+    height: 15px;
+}
+
+#perfil{
+    height: 15px;
+}
+
+.seta{
+    height: 15px;
+    margin-right: 10px;
+}
+
+.rodape{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: mediumvioletred;
+    height: 40px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.imagem-card{
+    width: 220px;
+}
+
+#div-pai{
+    display: flex;
+    flex-direction: row;
+}
