@@ -1,0 +1,60 @@
+.MainContainer {  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center
+}
+
+.IconContainer {
+    display: flex;
+}
+
+.IconImage { 
+	margin-right: 5px;
+}
+
+.PostContainer {
+    border: 1px solid gray;
+    width: 300px;
+    margin-bottom: 10px}
+
+
+.PostHeader {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px
+}
+
+
+.PostFooter { 
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between
+}
+
+
+.UserPhoto  { 
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%}
+
+    
+.PostPhoto{
+    width: 100%;
+}
+
+.CommentContainer{
+    display: flex;
+    justify-content: center;
+    padding: 5px
+}
+
+
+.InputComentario { 
+    width: 100%;
+    margin-right: 5px
+}
