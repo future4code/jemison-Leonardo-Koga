@@ -1,22 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
+import {CommentContainer, InputComentario} from './style'
 
-const CommentContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-`
 
-const InputComentario = styled.input`
-    width: 100%;
-    margin-right: 5px;
-`
+
 export function SecaoComentario(props) {
 	return (
 		<CommentContainer>
 			<InputComentario
 				placeholder={'Comentário'}
-				value={props.comentando}
+				value={props.valor}
 				onChange={props.onChangeComentario}
 			/>
 			<button onClick={props.aoEnviar}>Enviar</button>
