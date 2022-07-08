@@ -11,17 +11,17 @@ function App() {
     {
       nomeUsuario:'paulinha',
       fotoUsuario:'https://picsum.photos/50/50',
-      fotoPost:'https://picsum.photos/200/150'
+      fotoPost:'https://picsum.photos/200/150',
     },
     {
       nomeUsuario:'leo',
       fotoUsuario:'https://picsum.photos/150/50',
-      fotoPost:'https://picsum.photos/210/150'
+      fotoPost:'https://picsum.photos/210/150',
     },
     {
       nomeUsuario:'ju',
       fotoUsuario:'https://picsum.photos/50/50',
-      fotoPost:'https://picsum.photos/201/150'
+      fotoPost:'https://picsum.photos/201/150',
     }
   ])
 
@@ -45,20 +45,19 @@ function App() {
     setInputArrayPost(novaListaPost)
   }
 
-  const ListaPost = inputArrayPost.map((post,index) => {
+  const ListaPost = inputArrayPost.map((postagem,index) => {
     return(
-      <div key={index}>
-        <p>{post.nomeUsuario}</p>
-        <p>{post.fotoUsuario}</p>
-        <p>{post.fotoPost}</p>
-      </div>
+      <Post key={index}
+        nomeUsuario={postagem.nomeUsuario}
+        fotoUsuario={postagem.fotoUsuario}
+        fotoPost={postagem.fotoPost}
+      />
     )
   })
 
 return(
   <div className='MainContainer'>
           <form>
-            <label></label>
             <input 
             placeholder='nome'
             value={inputNomeUsuario}
