@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useState} from 'react';
 import Inicial from './Components/Inicial/Inicial';
-import Matches from './Components/Matches/Matches';
+import Matches from './Components/Matches/MatchItem';
+import ResetButton from './Components/Inicial/ResetButton';
 
 
 
@@ -25,7 +26,9 @@ function App() {
 
   return (
     <div>
+      <h2>AstroMatch</h2>
       {renderScreen()}
+      <ResetButton/>
     </div>
   );
 }
