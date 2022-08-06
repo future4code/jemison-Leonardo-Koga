@@ -7,10 +7,10 @@ function ProfileCard(props) {
 
     return(
         <Card>
-            {profile.name}
-            {profile.age}
+            <p>{profile.name}</p>
+            <p>{profile.age}</p>
             <Photo src= {profile.photo} alt="imagem do perfil"/>
-            {profile.bio}
+            <p>{profile.bio}</p>
         </Card>
     )
 }

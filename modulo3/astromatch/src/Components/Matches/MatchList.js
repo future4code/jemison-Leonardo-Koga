@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ResetButton from "../Inicial/ResetButton";
 import MatchItem from "./MatchItem";
 
 function MatchList(props){
@@ -22,9 +23,9 @@ function MatchList(props){
 
 
     return(
-        <div>
-            
-        </div>
+       <div>
+            <ResetButton/>
+       </div>
     )
 }
 

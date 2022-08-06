@@ -28,7 +28,8 @@ function Inicial(props){
             id: profiles.id,
         };
     setProfile(undefined)
-        axios.post(url, body, serviceHeaders)
+        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:leonardo-koga-jemison/choose-person", 
+        body, serviceHeaders)
         .then ((response) => {
             getAllProfile()
         })

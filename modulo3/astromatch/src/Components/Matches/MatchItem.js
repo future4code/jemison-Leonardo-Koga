@@ -6,7 +6,8 @@ function MatchItem(props) {
     return(
         <div>
             <button onClick={() => props.changeScreen('start')}>Home</button>
-            
+            <img src={profile.photo} alt="imagem" />
+            <p>{profile.name}</p>
         </div>
     )
 }
