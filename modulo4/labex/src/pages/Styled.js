@@ -17,7 +17,14 @@ export const ContainerInput = styled.section`
 display: flex;
 flex-direction: column;
 padding: 30px;
-
 width: 30%;
 margin: auto;
+`
+
+export const ContainerCard = styled.section`
+background-color: lightgray;
+padding: 10px;
+margin: 10px;
+text-align: left;
+
 `

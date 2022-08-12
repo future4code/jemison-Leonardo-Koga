@@ -4,6 +4,7 @@ import { ContainerInput } from './Styled';
 import { ContainerPai } from './Styled'
 
 function AdminHomePage() {
+
 const navigate = useNavigate();
 
 const goToLastPage = () => {
@@ -23,7 +24,7 @@ const goToCard2 =() => {
 
     return (
         <ContainerPai>
-            <p>Painel Administrativo</p>
+            <h1>Painel Administrativo</h1>
             <section>
                 <button onClick={ goToLastPage }>Voltar</button>
                 <button onClick={ goToCreateTrip }>Criar viagem</button>

@@ -12,7 +12,7 @@ const goToLastPage = () => {
 
     return (
         <section>
-            <p>Inscreva-se para uma viagem</p>
+            <h1>Inscreva-se para uma viagem</h1>
             <ContainerInput>
                 <select name="escolhaUmaViagem">
                     <option value="">Selecione</option>

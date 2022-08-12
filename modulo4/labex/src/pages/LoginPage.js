@@ -14,7 +14,7 @@ const goToAdmin = () => {
 }
     return (
         <section>
-            <p>Login</p>
+            <h1>Login</h1>
             <ContainerInput>
                 <input placeholder="Email"/>
                 <input placeholder="Senha"/>

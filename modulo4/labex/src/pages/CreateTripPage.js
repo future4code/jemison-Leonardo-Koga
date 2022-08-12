@@ -11,7 +11,7 @@ const goToLastPage = () => {
 
     return (
         <section>
-            <p>Criar viagem</p>
+            <h1>Criar viagem</h1>
             <ContainerInput>
                 <input placeholder="Nome"/>
                 <select name="escolhaUmPlaneta">

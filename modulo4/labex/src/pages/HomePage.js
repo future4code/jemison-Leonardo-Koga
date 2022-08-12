@@ -15,7 +15,7 @@ const goToAdm = () => {
 
     return (
         <Container>
-            <p>LabeX</p>
+            <h1>LabeX</h1>
             <ContainerBotton>
                 <button onClick={ goToTrip }>Ver viagens</button>
                 <button onClick={ goToAdm }>Area Adm</button>
