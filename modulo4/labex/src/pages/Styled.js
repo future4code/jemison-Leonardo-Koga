@@ -13,7 +13,7 @@ export const ContainerBotton = styled.section`
 
 `
 
-export const ContainerInput = styled.section`
+export const ContainerInput = styled.label`
 display: flex;
 flex-direction: column;
 padding: 30px;
@@ -27,4 +27,9 @@ padding: 10px;
 margin: 10px;
 text-align: left;
 
+`
+
+export const ContainerForm = styled.form`
+display: flex;
+flex-direction: column;
 `

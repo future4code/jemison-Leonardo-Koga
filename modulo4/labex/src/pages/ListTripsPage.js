@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useRequestData } from "../hooks/useRequestData";
+import { useRequestData } from "../Hooks/useRequestData";
 import { BASE_URL } from "../constants/constants";
 import { ContainerCard } from "./Styled"
 
 
 function ListTripsPage () {
 
-const [data, isLoading, error]= useRequestData(`${BASE_URL}trips`)
+const [data, isLoading, error]= useRequestData(`${BASE_URL}leonardo-koga-jemison/trips`)
 
 const listTrips = data && data.trips && data.trips.map((dataTrip)=>{
                     return(
