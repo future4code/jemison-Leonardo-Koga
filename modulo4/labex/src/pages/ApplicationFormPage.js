@@ -18,7 +18,7 @@ function ApllicationFormPage () {
 const postList = (e) => {
     e.preventDefault();
 
-    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/${body.trip}/apply`, body)
+    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/NoIFVcOiSgTKTIPVZwXS/apply`, body)
         .then((response) => {
             console.log(response.data)
             alert("Você está inscrito!")

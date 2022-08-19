@@ -1,9 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ContainerInput } from './Styled';
-import { ContainerPai } from './Styled'
+import useProtectedPage from "../Hooks/useProtectedPage";
+import { ButtonListAdminHomePage, CardAdminHomePage, ContainerAdminHomePage } from './Styled'
 
 function AdminHomePage() {
+    const [trips, setTrips] = useState([])
+
+    useProtectedPage()
+
+    useEffect(() => {
+        axios.get(
+            "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-koga-jemison/trips")
+        .then((response) => {
+            setTrips(response.data.trips)
+        }).catch((error) => {
+        alert("erro" + error)
+        })
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        axios.get(
+            "https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trip/NoIFVcOiSgTKTIPVZwXS",
+        {
+            headers: {
+                auth: token
+            }
+        }).then((response) => {
+            console.log(response.data)
+        }).catch((error) => {
+            console.log("Deu erro: ", error.response)
+        })
+    }, [])
 
 const navigate = useNavigate();
 
@@ -14,27 +44,25 @@ const goToCreateTrip = () => {
     navigate("/admin/trips/create")
 }
 
-const goToCard1 =() => {
-    navigate("/admin/trips/card1")
-}
-
-const goToCard2 =() => {
-    navigate("/admin/trips/card2")
-}
 
     return (
-        <ContainerPai>
+        <ContainerAdminHomePage>
             <h1>Painel Administrativo</h1>
             <section>
-                <button onClick={ goToLastPage }>Voltar</button>
-                <button onClick={ goToCreateTrip }>Criar viagem</button>
-                <button onClick={ goToLastPage }>Logout</button>
+                <ButtonListAdminHomePage onClick={ goToLastPage }>Voltar</ButtonListAdminHomePage>
+                <ButtonListAdminHomePage onClick={ goToCreateTrip }>Criar viagem</ButtonListAdminHomePage>
+                <ButtonListAdminHomePage onClick={ goToLastPage }>Logout</ButtonListAdminHomePage>
             </section>
-            <ContainerInput>
-                <button onClick={ goToCard1 }>Viagem 1 - card com lixeira na lateral direita</button>
-                <button onClick={ goToCard2 }>Viagem 2 - card com lixeira na lateral direita</button>
-            </ContainerInput>
-        </ContainerPai>
+            <div>
+                {trips.map((trip) => {
+                    return(
+                        <CardAdminHomePage>
+                            {trip.name}
+                        </CardAdminHomePage>
+                    )
+                })}
+            </div>
+        </ContainerAdminHomePage>
     )
 }
 

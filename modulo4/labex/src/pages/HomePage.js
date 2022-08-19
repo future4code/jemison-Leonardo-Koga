@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, ContainerBotton } from './Styled'
+import { useNavigate } from "react-router-dom"; 
+import { ButtonHomePage, ContainerPaiHomePage } from "./Styled"
 
 function HomePage () {
 const navigate = useNavigate();
@@ -14,13 +14,13 @@ const goToAdm = () => {
 }
 
     return (
-        <Container>
+        <ContainerPaiHomePage>
             <h1>LabeX</h1>
-            <ContainerBotton>
-                <button onClick={ goToTrip }>Ver viagens</button>
-                <button onClick={ goToAdm }>Area Adm</button>
-            </ContainerBotton>
-        </Container>
+            <section>
+                <ButtonHomePage onClick={ goToTrip }>Ver viagens</ButtonHomePage>
+                <ButtonHomePage onClick={ goToAdm }>Area Adm</ButtonHomePage>
+            </section>
+        </ContainerPaiHomePage>
     )
 }
 

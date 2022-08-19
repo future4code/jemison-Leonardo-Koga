@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "../Hooks/useForm"
 import { BASE_URL } from "../constants/constants"
+import useProtectedPage from "../Hooks/useProtectedPage";
+import { ButtonCreateTripPage, ButtonCreateTripPageCriar, ContainerListTripsPage, FormCreateTripPage, InputCreateTripPage, SelectCreateTripPage } from "./Styled";
 
 function CreateTripPage () {
+    useProtectedPage()
+
     const [ body, onChange, clear] = useForm({ name:"", planet:"", date:"", description:"", durationInDays:"" })
 
     const criarViagem = (event) => {
@@ -30,11 +34,12 @@ function CreateTripPage () {
     }
 
         return (
-            <section>
+            <ContainerListTripsPage>
                 <h1>Criar viagem</h1>
-                <form onSubmit={criarViagem}>
+                <ButtonCreateTripPage onClick={ goToLastPage }>Voltar</ButtonCreateTripPage>
+                <FormCreateTripPage onSubmit={criarViagem}>
                     <label htmlFor="name">Nome</label>
-                    <input
+                    <InputCreateTripPage
                         id="name"
                         name="name"
                         type="text"
@@ -45,7 +50,7 @@ function CreateTripPage () {
                         pattern="^.{5,}"
                     />
                     <label htmlFor="planeta">Planeta</label>
-                    <select 
+                    <SelectCreateTripPage 
                         id="planeta"
                         type="select"
                         name="planet"
@@ -64,9 +69,9 @@ function CreateTripPage () {
                         <option>Urano</option>
                         <option>Netuno</option>
                         <option>Plutão</option>
-                    </select>
+                    </SelectCreateTripPage>
                     <label htmlFor="date" >Data</label>
-                    <input
+                    <InputCreateTripPage
                         id="date"
                         type="date"
                         name="date"
@@ -76,7 +81,7 @@ function CreateTripPage () {
                         required
                     />
                     <label htmlFor="description">Descrição</label>
-                    <input
+                    <InputCreateTripPage
                         id="description"
                         type="text"
                         name="description"
@@ -86,7 +91,7 @@ function CreateTripPage () {
                         required
                     />
                     <label htmlFor="durationInDays">Duração</label>
-                    <input
+                    <InputCreateTripPage
                         id="durationInDays"
                         type="text"
                         name="durationInDays"
@@ -95,10 +100,9 @@ function CreateTripPage () {
                         onChange={onChange}
                         required
                     />
-                    <button onClick={ goToLastPage }>Voltar</button>
-                    <button>Criar</button>    
-                </form>
-            </section>
+                    <ButtonCreateTripPageCriar>Criar</ButtonCreateTripPageCriar>    
+                </FormCreateTripPage>
+            </ContainerListTripsPage>
         )
 }
 

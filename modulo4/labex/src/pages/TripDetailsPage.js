@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useProtectedPage from "../Hooks/useProtectedPage";
 
 function TripDetailsPage () {
+    useProtectedPage()
 const navigate =useNavigate();
 const pathParams = useParams();
 const card = pathParams.card;
