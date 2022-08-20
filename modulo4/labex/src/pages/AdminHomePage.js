@@ -44,6 +44,12 @@ const goToCreateTrip = () => {
     navigate("/admin/trips/create")
 }
 
+    function logout () {
+        localStorage.removeItem('token')
+        alert("Você foi deslogadp")
+        goToLastPage()
+    }
+
 
     return (
         <ContainerAdminHomePage>
@@ -51,7 +57,7 @@ const goToCreateTrip = () => {
             <section>
                 <ButtonListAdminHomePage onClick={ goToLastPage }>Voltar</ButtonListAdminHomePage>
                 <ButtonListAdminHomePage onClick={ goToCreateTrip }>Criar viagem</ButtonListAdminHomePage>
-                <ButtonListAdminHomePage onClick={ goToLastPage }>Logout</ButtonListAdminHomePage>
+                <ButtonListAdminHomePage onClick={() => logout()}>Logout</ButtonListAdminHomePage>
             </section>
             <div>
                 {trips.map((trip) => {
