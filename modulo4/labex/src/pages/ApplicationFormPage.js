@@ -1,11 +1,19 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../Hooks/useForm";
 import { BASE_URL } from "../constants/constants";
+import { ButtonApplicationFormPage, ButtonApplicationFormPageInscrever, ContainerApplicationFormPage, FormApplicationFormPage, InputApplicationFormPage, SelectApplicationFormPage } from "./Styled";
 
 
 function ApllicationFormPage () {
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
     const [ body, onChange, clear] = useForm({ 
         name:"", 
         age:"", 
@@ -15,10 +23,35 @@ function ApllicationFormPage () {
         trip:""
     })
 
+const [trips, setTrips] = useState([])
+
+useEffect (() => {
+    axios.get (`${BASE_URL}leonardo-koga-jemison/trips`)
+    .then((response) => {
+        setTrips(response.data.trips)
+        console.log(response.data.trips)
+    }).catch((err) => {
+        console.log(err)
+        alert(err)
+    })
+}, [])
+
 const postList = (e) => {
     e.preventDefault();
+    clear();
+    applicationForm()
+}
 
-    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/NoIFVcOiSgTKTIPVZwXS/apply`, body)
+const applicationForm = () => {
+    const body = {
+        name: body.name,
+        age: body.age,
+        profession: body.profession,
+        country: body.country,
+        applicationText: body.applicationText,
+    }
+
+    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/${body.trip}/apply`, body)
         .then((response) => {
             console.log(response.data)
             alert("Você está inscrito!")
@@ -26,9 +59,7 @@ const postList = (e) => {
             console.log("deu erro!")
             alert("Erro! Tente novamente!")
         })
-        clear();
-        
-}
+    };
 
 
 const navigate = useNavigate();
@@ -39,11 +70,12 @@ const goToLastPage = () => {
 
 
     return (
-        <section>
+        <ContainerApplicationFormPage>
             <h1>Inscreva-se para uma viagem</h1>
-            <form onSubmit={postList}>
+            <ButtonApplicationFormPage onClick={ goToLastPage }>Voltar</ButtonApplicationFormPage>
+            <FormApplicationFormPage onSubmit={postList}>
                 <label htmlFor="name">Nome</label>
-                <input
+                <InputApplicationFormPage
                     id="name"
                     name="name"
                     type="text"
@@ -55,7 +87,7 @@ const goToLastPage = () => {
                     required
                 />
                 <label htmlFor="age">Idade</label>
-                <input
+                <InputApplicationFormPage
                     id="age"
                     name="age"
                     type="number"
@@ -66,7 +98,7 @@ const goToLastPage = () => {
                     required
                 />
                 <label htmlFor="applicationText">Texto</label>
-                <input
+                <InputApplicationFormPage
                     id="applicationText"
                     name="applicationText"
                     type="text"
@@ -76,7 +108,7 @@ const goToLastPage = () => {
                     required
                 />
                 <label htmlFor="profession">Profissião</label>
-                <input
+                <InputApplicationFormPage
                     id="profession"
                     name="profession"
                     type="text"
@@ -85,8 +117,28 @@ const goToLastPage = () => {
                     onChange={onChange}
                     required
                 />
+                <label htmlFor="viagem">Escolha uma viagem</label>
+                <SelectApplicationFormPage
+                    name={'trip'}
+                    onChange={onChange}
+                    value={body.trip}>
+
+                    {trips && trips.map((trip, index) => {
+                        return(
+                            <option
+                                key={index}
+                                viagem="id"
+                                value={trip.id}
+                                name="trip"
+                                onChance={onChange}
+                            >
+                                {trip.name} ({trip.planet})
+                            </option>
+                        )
+                    })}
+                </SelectApplicationFormPage>
                 <label htmlFor="country">País</label>
-                <select
+                <SelectApplicationFormPage
                     id="country"
                     name="country"
                     type="select"
@@ -341,13 +393,13 @@ const goToLastPage = () => {
                         <option value="Yemen">Yemen</option>
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
-                </select>
-                <button onClick={ goToLastPage }>Voltar</button>
-                <button>Inscrever-se</button>
-            </form>
+                </SelectApplicationFormPage>
+                
+                <ButtonApplicationFormPageInscrever onClick={handleClickOpen}>Inscrever-se</ButtonApplicationFormPageInscrever>
+            </FormApplicationFormPage>
             
             
-        </section>
+        </ContainerApplicationFormPage>
     )
 }
 

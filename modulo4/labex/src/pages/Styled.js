@@ -91,6 +91,7 @@ border-radius: 10px;
 opacity: 0.7;
 box-shadow: 0px 0.5px 15px gray;
 
+
 `
 //AdminHomePage
 
@@ -195,6 +196,55 @@ width: 350px;
 height: 25px;
 `
 export const ButtonCreateTripPageCriar = styled.button`
+padding: 5px;
+font-size: 13px;
+font-family: monospace;
+width: 170px;
+border-radius: 10px;
+margin-left: 10px;
+margin-top: 20px;
+:hover{
+  cursor: pointer;
+  color: blue;
+  transform: scale(1.1);
+}
+`
+//ApplicationFormPage
+
+export const ContainerApplicationFormPage = styled.section`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+export const ButtonApplicationFormPage = styled.button`
+padding: 13px;
+font-size: 13px;
+font-family: monospace;
+width: 170px;
+border-radius: 10px;
+margin-left: 10px;
+:hover{
+  cursor: pointer;
+  color: blue;
+  transform: scale(1.1);
+}
+`
+export const FormApplicationFormPage = styled.form`
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 50px;
+font-family: monospace;
+`
+export const InputApplicationFormPage = styled.input`
+width: 350px;
+height: 20px;
+`
+export const SelectApplicationFormPage = styled.select`
+width: 358px;
+height: 28px;
+`
+export const ButtonApplicationFormPageInscrever = styled.button`
 padding: 5px;
 font-size: 13px;
 font-family: monospace;

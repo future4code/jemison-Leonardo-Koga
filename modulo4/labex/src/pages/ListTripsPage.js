@@ -9,28 +9,29 @@ function ListTripsPage () {
 
 const [data, isLoading, error]= useRequestData(`${BASE_URL}leonardo-koga-jemison/trips`)
 
-const listTrips = data && data.trips && data.trips.map((dataTrip)=>{
-                    return(
-                        <CardListTripsPage>
-                            <p>Nome: {dataTrip.name}</p>
-                            <p>Descrição: {dataTrip.description}</p>
-                            <p>Planeta: {dataTrip.planet}</p>
-                            <p>Duração: {dataTrip.durationInDays}</p>
-                            <p>Data: {dataTrip.date}</p>
-                            <ButtonListTripPageIncrever>Inscrever-se</ButtonListTripPageIncrever>
-                        </CardListTripsPage>
-                    )
-                } )
-
 const navigate = useNavigate();
 
 const goToLastPage = () => {
     navigate(-1)
 }
 
-const goToSignUp = () => {
+const goToApplicationFormPage = () => {
     navigate("/trips/application")
 }
+
+const listTrips = data && data.trips && data.trips.map((dataTrip)=>{
+                    return(
+                        <CardListTripsPage key={dataTrip.id} >
+                            <p>Nome: {dataTrip.name}</p>
+                            <p>Descrição: {dataTrip.description}</p>
+                            <p>Planeta: {dataTrip.planet}</p>
+                            <p>Duração: {dataTrip.durationInDays}</p>
+                            <p>Data: {dataTrip.date}</p>
+                            <ButtonListTripPageIncrever onClick={goToApplicationFormPage}>Candidatar-se</ButtonListTripPageIncrever>
+                        </CardListTripsPage>
+                    )
+                } )
+
 
     return (
         <ContainerListTripsPage>

@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useProtectedPage from "../Hooks/useProtectedPage";
+import { BASE_URL } from "../constants/constants";
 import { ButtonListAdminHomePage, CardAdminHomePage, ContainerAdminHomePage } from './Styled'
 
 function AdminHomePage() {
     const [trips, setTrips] = useState([])
+    const pathParams = useParams()
 
     useProtectedPage()
 
     useEffect(() => {
         axios.get(
-            "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-koga-jemison/trips")
+            `${BASE_URL}leonardo-koga-jemison/trips`)
         .then((response) => {
             setTrips(response.data.trips)
         }).catch((error) => {
@@ -19,34 +21,23 @@ function AdminHomePage() {
         })
     }, [])
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
+    
+    const navigate = useNavigate();
 
-        axios.get(
-            "https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/trip/NoIFVcOiSgTKTIPVZwXS",
-        {
-            headers: {
-                auth: token
-            }
-        }).then((response) => {
-            console.log(response.data)
-        }).catch((error) => {
-            console.log("Deu erro: ", error.response)
-        })
-    }, [])
+    const goToLastPage = () => {
+        navigate(-1)
+    }
+    const goToCreateTrip = () => {
+        navigate("/admin/trips/create")
+    }
 
-const navigate = useNavigate();
-
-const goToLastPage = () => {
-    navigate(-1)
-}
-const goToCreateTrip = () => {
-    navigate("/admin/trips/create")
-}
+    const goToTripDetailsPage = () => {
+        navigate("/admin/trips/:tripId")
+    }
 
     function logout () {
         localStorage.removeItem('token')
-        alert("Você foi deslogadp")
+        alert("Você foi deslogado")
         goToLastPage()
     }
 
@@ -55,15 +46,15 @@ const goToCreateTrip = () => {
         <ContainerAdminHomePage>
             <h1>Painel Administrativo</h1>
             <section>
-                <ButtonListAdminHomePage onClick={ goToLastPage }>Voltar</ButtonListAdminHomePage>
                 <ButtonListAdminHomePage onClick={ goToCreateTrip }>Criar viagem</ButtonListAdminHomePage>
                 <ButtonListAdminHomePage onClick={() => logout()}>Logout</ButtonListAdminHomePage>
             </section>
             <div>
                 {trips.map((trip) => {
-                    return(
-                        <CardAdminHomePage>
+                    return( 
+                        <CardAdminHomePage onClick={()=>goToTripDetailsPage(trip.id)}>
                             {trip.name}
+                            <div>**Clique para mais detalhes</div>
                         </CardAdminHomePage>
                     )
                 })}
