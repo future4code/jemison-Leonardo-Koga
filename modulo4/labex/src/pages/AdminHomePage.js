@@ -3,13 +3,26 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useProtectedPage from "../Hooks/useProtectedPage";
 import { BASE_URL } from "../constants/constants";
-import { ButtonListAdminHomePage, CardAdminHomePage, ContainerAdminHomePage } from './Styled'
+import { ButtonDelete, ButtonDetalhes, ButtonListAdminHomePage, CardAdminHomePage, ContainerAdminHomePage } from './Styled'
 
 function AdminHomePage() {
     const [trips, setTrips] = useState([])
-    const pathParams = useParams()
+    const pathParams = useParams();
 
     useProtectedPage()
+
+    const deletarViagem = (event) => {
+        event.preventDefault()
+
+        axios.delete(`${BASE_URL}leonardo-koga-jemison/trips/${pathParams.id}`, { headers: { auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im93T2g5ZWo2bW50akZqNUNRMVB4IiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE1ODk1NjI5MDh9.aB4dNbTCkToXB7pdzEa-tuMa-QbRQDUd93eva4-cec0"}})
+            .then((response) => {
+                console.log(response.data);
+                alert("Viagem deletada")
+        }).catch((error) =>{
+            console.log("deu erro")
+                alert("Deu erro, tente novamente!")
+        })
+    }
 
     useEffect(() => {
         axios.get(
@@ -31,8 +44,8 @@ function AdminHomePage() {
         navigate("/admin/trips/create")
     }
 
-    const goToTripDetailsPage = () => {
-        navigate("/admin/trips/:tripId")
+    const goToTripDetailsPage = (id) => {
+        navigate("/admin/trips/${id}")
     }
 
     function logout () {
@@ -52,9 +65,10 @@ function AdminHomePage() {
             <div>
                 {trips.map((trip) => {
                     return( 
-                        <CardAdminHomePage onClick={()=>goToTripDetailsPage(trip.id)}>
+                        <CardAdminHomePage key={trip.id}>
                             {trip.name}
-                            <div>**Clique para mais detalhes</div>
+                            <ButtonDetalhes  onClick={goToTripDetailsPage} >+ detalhes</ButtonDetalhes>
+                            <ButtonDelete onClick={deletarViagem}>deletar</ButtonDelete>
                         </CardAdminHomePage>
                     )
                 })}

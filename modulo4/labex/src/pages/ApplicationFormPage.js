@@ -123,10 +123,10 @@ const goToLastPage = () => {
                     onChange={onChange}
                     value={body.trip}>
 
-                    {trips && trips.map((trip, index) => {
+                    {trips && trips.map((trip) => {
                         return(
                             <option
-                                key={index}
+                                key={trip.id}
                                 viagem="id"
                                 value={trip.id}
                                 name="trip"

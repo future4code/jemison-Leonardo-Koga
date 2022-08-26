@@ -24,26 +24,7 @@ margin-left: 10px;
 
 
 
-//AdminHomePage
 
-export const CardAdminHomePage = styled.div`
-font-size: 15px;
-font-family: monospace;
-width: 315px;
-height: 30px;
-margin-top: 50px; 
-padding: 30px;
-background-color: white;
-color: black;
-border-radius: 10px;
-opacity: 0.7;
-box-shadow: 0px 0.5px 15px gray;
-:hover{
-  cursor: pointer;
-  color: blue;
-  transform: scale(1.1);
-} 
-`
 
 //ListTripsPage
 export const ContainerListTripsPage = styled.section`
@@ -100,6 +81,28 @@ display: flex;
 flex-direction: column;
 align-items: center;
 `
+
+export const CardAdminHomePage = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+font-size: 15px;
+font-family: monospace;
+width: 300px;
+height: 70px;
+margin-top: 50px; 
+padding: 40px;
+background-color: white;
+color: black;
+border-radius: 10px;
+opacity: 0.7;
+box-shadow: 0px 0.5px 15px gray;
+:hover{
+  cursor: pointer;
+  color: blue;
+  transform: scale(1.1);
+} 
+`
 export const ButtonListAdminHomePage = styled.button`
 padding: 13px;
 font-size: 13px;
@@ -113,6 +116,37 @@ margin-left: 10px;
   transform: scale(1.1);
 }
 `
+export const ButtonDelete = styled.button`
+padding: 07px;
+font-size: 13px;
+font-family: monospace;
+width: 70px;
+border-radius: 10px;
+margin-left: 10px;
+margin-top: 5px;
+:hover{
+  cursor: pointer;
+  color: red;
+  transform: scale(1.1);
+}
+`
+export const ButtonDetalhes = styled.button`
+padding: 07px;
+font-size: 13px;
+font-family: monospace;
+width: 100px;
+border-radius: 10px;
+margin-left: 10px;
+margin-top: 5px;
+:hover{
+  cursor: pointer;
+  color: red;
+  transform: scale(1.1);
+}
+`
+
+
+
 
 //Login
 

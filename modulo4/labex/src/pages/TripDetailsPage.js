@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useProtectedPage from "../Hooks/useProtectedPage";
 import { BASE_URL } from "../constants/constants";
-import AdminTripInfo from "./AdminTripInfo";
 
 
 function TripDetailsPage () {
@@ -14,7 +13,7 @@ const pathParams = useParams();
 
 
 const getTripDetails = () => {
-    axios.get(`${BASE_URL}leonardo-koga-jemison/trip/${pathParams.tripId}`,{
+    axios.get(`${BASE_URL}leonardo-koga-jemison/trip/${pathParams.id}`,{
         headers: {
             auth: localStorage.getItem('token')
         }
@@ -36,7 +35,7 @@ const goToLastPage = () => {
         <div>
             <button onClick={ goToLastPage }>Voltar</button>
             <div>
-                <AdminTripInfo />
+               
             </div>
         </div>
     )
