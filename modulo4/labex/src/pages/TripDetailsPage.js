@@ -8,7 +8,7 @@ import { BASE_URL } from "../constants/constants";
 function TripDetailsPage () {
     useProtectedPage()
 const navigate =useNavigate();
-const [trips, setTrips] = useState();
+const [trip, setTrip] = useState([]);
 const pathParams = useParams();
 
 
@@ -18,7 +18,9 @@ const getTripDetails = () => {
             auth: localStorage.getItem('token')
         }
     }).then((resp) => {
-        setTrips(resp.data.trip)
+        setTrip(resp.data.trip)
+    }).catch((error) => {
+        alert(error)
     })
 }
 
@@ -35,8 +37,14 @@ const goToLastPage = () => {
         <div>
             <button onClick={ goToLastPage }>Voltar</button>
             <div>
-               
+                {trip && (
+                    <div>
+                        <h1>{trip.name}</h1>
+                        <p>{trip.description}</p>
+                    </div>
+                )}
             </div>
+            
         </div>
     )
 }

@@ -16,11 +16,10 @@ function ApllicationFormPage () {
 
     const [ body, onChange, clear] = useForm({ 
         name:"", 
-        age:"", 
+        age:"",
+        applicationText:"", 
         profession:"", 
         country:"", 
-        applicationText:"", 
-        trip:""
     })
 
 const [trips, setTrips] = useState([])
@@ -43,15 +42,15 @@ const postList = (e) => {
 }
 
 const applicationForm = () => {
-    const body = {
+    const form = {
         name: body.name,
         age: body.age,
+        applicationText: body.applicationText,
         profession: body.profession,
         country: body.country,
-        applicationText: body.applicationText,
     }
 
-    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/${body.trip}/apply`, body)
+    axios.post(`${BASE_URL}leonardo-koga-jemison/trips/${body.id}/apply`, body)
         .then((response) => {
             console.log(response.data)
             alert("Você está inscrito!")

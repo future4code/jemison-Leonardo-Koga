@@ -2,7 +2,7 @@ import React from "react";
 
 function AdminTripInfo(props) {
 
-    const {name, planet, description, date, durationInDays} = props.trips
+    const {name, planet, description, date, durationInDays} = props
 
     return (
         <div>
