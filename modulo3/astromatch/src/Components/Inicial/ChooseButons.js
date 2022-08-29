@@ -1,13 +1,14 @@
 import React from "react";
+import { ButtonContainer } from "./style";
 
 
 function ChooseButons (props) {
 
     return(
-        <div>
-            <button onClick={props.onClickNo}>No</button>
-            <button onClick={props.onClickYes}>Yes</button>
-        </div>
+        <ButtonContainer>
+            <button onClick={props.onClickNo}>Não</button>
+            <button onClick={props.onClickYes}>Sim</button>
+        </ButtonContainer>
     )
 }
 

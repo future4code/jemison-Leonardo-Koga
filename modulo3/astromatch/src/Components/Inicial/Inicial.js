@@ -1,62 +1,41 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import ChooseButons from "./ChooseButons";
-import ProfileCard from "./ProfileCard";
+import React, { useState } from "react";
+import { Bar, InicialContainer } from "./style";
+import ChooseProfilePage from "./ChooseProfilePage";
+import MatchList from "../Matches/MatchList"
 
 
-function Inicial(props){
+function Inicial(){
+    const [screen, setScreen] = useState('choose-profile')
+  
+    const renderScreen = () => {
+      switch (screen) {
+        case 'choose-profile' :
+          return <ChooseProfilePage/>
+        case 'match-list' :
+          return <MatchList/>
+        default:
+          return null
+    }
+  }
 
-    const [profiles, setProfile] = useState([])
-
-    const url = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:leonardo-koga-jemison/person"
-
-    const serviceHeaders ={
-        headers : {
-            Authorization: "leonardo-koga-jemison"
-        }
+    const goToprofilePage = () => {
+        setScreen('choose-profile')
     }
 
-    const getAllProfile = () => {
-        axios.get(url, serviceHeaders)
-            .then((response) => { setProfile(response.data.profile)})
-            .catch((err) => { console.log(err) })
+    const goToMatchListPage = () => {
+        setScreen('match-list')
     }
-
-    const choosePerson = (choice) => {
-        const body = {
-            choice: choice,
-            id: profiles.id,
-        };
-    setProfile(undefined)
-        axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:leonardo-koga-jemison/choose-person", 
-        body, serviceHeaders)
-        .then ((response) => {
-            getAllProfile()
-        })
-    }
-
-    useEffect(() => {
-        getAllProfile();
-    },[])
-
-    const onClickNo = () => {
-        choosePerson(false)
-    }
-
-    const onClickYes = () => {
-        choosePerson(true)
-    }
-
+    
     return(
-        <div>
-            <button onClick={() => props.changeScreen('match')}>Matches</button>
-            <div>
-               <ProfileCard profile={profiles}/>
-            </div>
-            <div>
-                <ChooseButons onClickYes={onClickYes} onClickNo={onClickNo}/>
-            </div>
-        </div>
+        <InicialContainer>
+            <Bar>
+                <button onClick={goToprofilePage}>Matches</button>
+                <h2>astromatch</h2>
+                <button onClick={goToMatchListPage}>Lista</button>
+            </Bar>
+            {renderScreen()}    
+        </InicialContainer>
+  
     )
 }
 

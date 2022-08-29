@@ -1,32 +1,26 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ResetButton from "../Inicial/ResetButton";
-import MatchItem from "./MatchItem";
+import MatchItem from "./MatchItem"
 
-function MatchList(props){
+function MatchList(){
     const [matches, setMatches] = useState([])
-
-    const getMatches = () => {
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:leonardo-koga-jemison/matches")
-        .then((response) => {
-            console.log(response.data.matches);
-            setMatches(response.data.matches)
-        })
-        .catch((erro) => {
-            console.log(erro)
-        })
-    }
+    
 
     useEffect(() => {
-        getMatches()
-    }, [matches]);
-
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-koga-jemison/matches')
+        .then((response) => {
+            console.log(response.data.matches)
+            setMatches(response.data.matches)
+        })
+    }, [])
 
     return(
-       <div>
-            <ResetButton/>
+        <div>
+            {matches.map((profile) => {
+                return <MatchItem profile={profile}/>
+            })}
        </div>
     )
 }
 
-export default MatchList
+export default MatchList;
