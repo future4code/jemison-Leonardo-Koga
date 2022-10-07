@@ -1,21 +1,17 @@
-function cToF(celsius) 
-{
-  const cTemp = celsius;
-  const cToFahr = cTemp * 9 / 5 + 32;
-  const message = `${cTemp}\xB0C é equivalente a  ${cToFahr}\xB0F.`;
-    console.log(message);
+function converter(Celsius, temperatura) {
+  if(temperatura === "F") {
+    farenheit = Celsius * 9 / 5 + 32
+    return(`${Celsius}° Celsius é = ${farenheit}° Farenheit.`)
+  } if ( temperatura === "K") {
+    kelvin = Celsius + 273
+    return(`${Celsius}° Celsius é = ${kelvin}° Kelvin.`)
+  } if ( temperatura !== "F" && temperatura !== "K") {
+    return( "Erro, valor errado")
+  }
 }
 
-function fToC(kelvin) 
-{
-  const fTemp = kelvin;
-  const fToKel = fTemp + 273;
-  const message = `${fTemp}\xB0C é equivalente a ${fToKel}\xB0C.`;
-    console.log(message);
-} 
-cToF(60);
-fToC(45);
-
-
+console.log(converter(25, "F"))
+console.log(converter(30, "K"))
+console.log(converter(13, "J"))
 
 
