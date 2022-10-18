@@ -1,0 +1,14 @@
+{
+  "name": "package-json",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "Leonardo Koga",
+  "license": "ISC"
+}
