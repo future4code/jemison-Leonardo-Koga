@@ -11,6 +11,7 @@
     "exercicio5": "tsc && node ./build/exercicio5.js",
     "exercicio6": "tsc && node ./build/exercicio6.js",
     "exercicio7": "tsc && node ./build/exercicio7.js",
+    "exercicio8": "tsc && node ./build/exercicio8.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
