@@ -87,28 +87,6 @@ app.get('/posts',(req: Request, resp: Response)=> {
 //Construa um endpoint que retorne os posts de um usuário em particular.
 //Use o JSONPlaceholder como exemplo para a construção da rota.
 
-// app.get('/posts/:userId',(req: Request, resp: Response)=>{
-//     const id = req.params.userId
-//     console.log(id);
-
-//     const userPost = posts.filter((post) => {
-//         return post.id === Number(id)
-//     })
-//     console.log(userPost);
-    
-//     const post = posts.filter((i) => {
-//         if(!id){
-//             return i.body
-//         }else if(!userPost){
-//             return "ID não encontrado"
-//         }else{
-//             return i.userId === Number(id)
-//         }
-//     })
-    
-//     response.status(200).send(post)
-// })
-
 app.get('/:userId/posts',(req: Request, resp: Response)=>{
     resp.send(posts.filter(post => {
         return post.userId === Number(req.params.userId)
