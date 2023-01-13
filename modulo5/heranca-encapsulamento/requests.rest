@@ -1,0 +1,43 @@
+### Endpoint de teste
+GET http://localhost:3003/ping
+
+### Exercício 1 - Create user
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "email": "leo@gmail.com",
+    "password": "teste1234"
+}
+
+### Exercício 2 - Get users
+GET http://localhost:3003/users
+
+### Exercício 3 - Create product
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "Teste Product 7",
+    "price": 7000
+}
+
+### Exercício 4 - Get products
+GET http://localhost:3003/products
+
+### Exercício 5 - Create purchase
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "userId": "101",
+    "productId": "204",
+    "quantity": 2
+}
+
+### Exercício 6 - Get user purchases
+GET http://localhost:3003/users/301/purchases
+
+
+### Get user by Id
+GET http://localhost:3003/users/103
