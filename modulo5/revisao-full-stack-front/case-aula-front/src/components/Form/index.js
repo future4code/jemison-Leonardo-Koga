@@ -1,101 +1,162 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useRequestData } from '../../hooks/useRequestData';
-import { MyOrderForm } from './style'
+import { goToEndOrder } from '../../routers/Coordinator';
+import { MyOrderForm } from './style';
 
-export default function Form() {
-    const [visibleButtonClient, setVisibleButtonClient] = useState(true)
-    //Dados do For
+export default function Form({ productList, setProductList }) {
+    const navigate = useNavigate();
+    //visible de botões
+    const [visebleBottonClient, setVisibleButtonClient] = useState(true)
+    const [visebleBottonProduct, setVisibleButtonProduct] = useState(true)
+    //Da\dos do Form
     const [form, onChange, restForm] = useForm({ client: "", product: "", qty: 1, deliveryDate: "" })
-    //Dados clientes
-    const [dataClient, isLoadingClient, errorClient, upClient, setUpClient] = useRequestData('http://localhost:3003/clients');
-    //Dados produtos
-    const [dataProduct, isLoadingProduct, errorProduct] = useRequestData('http://localhost:3003/products');
-    //Cliente selicionado
-    const selectClient = !isLoadingClient && dataClient && dataClient.find((dClient) => {
+    //Dados Clientes
+    const [dataClient, isloadingClient, erroClient, upClient, setUpClient] = useRequestData('http://localhost:3003/clients');
+    //Dados Produtos
+    const [dataProduct, isloadingProduct, erroProduct] = useRequestData('http://localhost:3003/products');
+    //---------------------------------- CLIENTEAS ----------------------------------------------------------------
+    //CLIENTE SELECIONADO
+    const selectClient = !isloadingClient && dataClient && dataClient.find((dClient) => {
         return dClient.name === form.client;
     })
 
-    //Adicionar cliente
-    const addClient = () => {
+
+    //adicionar cliente
+    const addCient = () => {
         const body =
         {
             "name": form.client
         }
         axios.post('http://localhost:3003/client', body, {})
             .then((response) => {
-                setUpClient(!upClient)
-                console.log(response)
-            }
+                setUpClient(!upClient);
+                console.log(response);
 
+            }
             ).catch((error) => {
                 console.log(error.message);
             })
     }
-
-    //Selecionar cliente
-    const selectCient = () => {
-        setVisibleButtonClient(!visibleButtonClient)
+    //selecionar cliente
+    const selectCientButton = () => {
+        setVisibleButtonClient(!visebleBottonClient)
     }
 
+    //---------------------------------- PRODUTOS ----------------------------------------------------------------
+    //CLIENTE SELECIONADO
+    const selectProduct = !isloadingProduct && dataProduct && dataProduct.find((dProduct) => {
+        return dProduct.name === form.product;
+    })
+    //add produto
+    const addProduct = () => {
+        console.log(productList);
+        const newPproduct = selectProduct;
+        newPproduct.qty = form.qty;
+        setProductList([...productList, newPproduct])
+    }
+    //---------------------------------- ORDER ----------------------------------------------------------------
+
+    const makeOrder = (e) => {
+        e.preventDefault();
+        if (!productList || !form.deliveryDate || !selectClient) {
+            alert("Confira os dados")
+        } else {
+            const deliveryDateDb = `${form.deliveryDate.split("/")[2]}-${form.deliveryDate.split("/")[1]}-${form.deliveryDate.split("/")[0]}`
+            const productListDB = productList.map((p) => {
+                return { "id": p.id, "qty": Number(p.qty) }
+            })
+            const body = {
+                "fk_client": Number(selectClient.id),
+                "delivery_date": deliveryDateDb,
+                "products": productListDB
+            }
+
+            axios.post('http://localhost:3003/order', body, {})
+                .then((response) => {
+                    console.log(response);
+                    goToEndOrder(navigate)
+                }
+                ).catch((error) => {
+                    console.log(error.message);
+                }
+                )
+        }
+    }
 
     return (
-        <MyOrderForm>
-            <div>
-                {selectClient && !visibleButtonClient && <h1>Client:{selectClient.name}</h1>}
-            </div>
-            {/* client */}
-            <div id='selec-client'>
+        <MyOrderForm onSubmit={makeOrder}>
+            {selectClient && !visebleBottonClient &&
+                <div>
+                    <h1>Client:{selectClient.name}</h1>
+                </div>
+            }
+            {/* //client */}
+            {selectClient && !visebleBottonClient ||
+                <div id='selec-client'>
 
-                <label htmlFor='client'>Nome do Cliente</label>
-                <input id='client' list='dataClient' name='client' onChange={onChange} value={form.client}></input>
-                <datalist id='dataClient'>
-                    {/* <option> Leo </option>
-                    <option> Ju </option>
-                    <option> Cris </option>
-                    <option> Ha </option> */}
-                    {isLoadingClient && !dataClient && <option>Carregando...</option>}
-                    {!isLoadingClient && dataClient && dataClient.map((client) => {
-                        return <option key={client.id}>
-                            {client.name}
-                        </option>
-                    })}
-                </datalist>
-                {!selectClient && (form.client.length > 2) &&
-                    <button type='button' onClick={() => { addClient() }}>Cadastrar Cliente</button>}
+                    <label htmlFor='client' >Nome do Cliente </label>
+                    <input id="client" list='dataClient' name='client' onChange={onChange} value={form.client}></input>
+                    <datalist id='dataClient'>
+                        {/* <option> Jr </option>
+                    <option> Paulo </option>
+                    <option> José </option>
+                    <option> Maria </option> */}
+                        {isloadingClient && !dataClient && <option>Carregando..</option>}
+                        {!isloadingClient && dataClient && dataClient.map((client) => {
+                            return <option key={client.id} >
+                                {client.name}
+                            </option>
+                        })}
+                    </datalist>
+                    {!selectClient && (form.client.length > 2) &&
+                        <button type='button' onClick={() => { addCient() }} >Cadastar Cliente</button>}
 
-                {selectClient && visibleButtonClient &&
-                    <button type='button' onClick={() => { selectCient() }}>Confirmar</button>}
+                    {selectClient && visebleBottonClient &&
+                        <button type='button' onClick={() => { selectCientButton() }} >Confirmar</button>}
 
-            </div>
-            {/* product */}
-            <div id='select-product'>
-                <label htmlFor='product'>Produto</label>
-                <input id='product' list='dataProduct'></input>
-                <datalist id='dataProduct'>
-                    {/* <option> Banana </option>
+                </div>
+            }
+            {/* //Prtoduct */}
+            {selectClient && !visebleBottonClient &&
+                <div id='select-product'>
+                    <label htmlFor='product' >Produto </label>
+                    <input id="product" list='dataProduct' name='product' value={form.product} onChange={onChange}></input>
+                    <datalist id='dataProduct'>
+                        {/* <option> Banana </option>
                     <option> Mamão </option>
-                    <option> Maçã </option>
+                    <option> Macã </option>
                     <option> Goiaba </option> */}
-                    {isLoadingProduct && dataProduct && <option>Carregando...</option>}
-                    {!isLoadingProduct && dataProduct && dataProduct.map((product) => {
-                        return <option key={product.id}>
-                            {product.name}
-                        </option>
-                    })}
-                </datalist>
-                <label>Quantidade</label>
-                <input id='qty' type={"number"}></input>
-                <p>R$: 1000</p>
-                <button>Ok</button>
-            </div>
-            {/* order */}
-            <div id='order'>
-                <label htmlFor='deliveryDate'>Data de entrega (DD/MM/AAAA)</label>
-                <input id='deliveryDate'></input>
-                <button>Confirmar</button>
-            </div>
+                        {isloadingProduct && !dataProduct && <option>Carregando..</option>}
+                        {!isloadingProduct && dataProduct && dataProduct.map((product) => {
+                            return <option key={product.id} >
+                                {product.name}
+                            </option>
+                        })}
+                    </datalist>
+                    <label htmlFor='qty' >Quantidade </label>
+                    <input id="qty" type={"number"} name="qty" value={form.qty} onChange={onChange}></input>
+                    <p>R$: {selectProduct && parseFloat(selectProduct.price * form.qty).toFixed(2)}</p>
+
+                    {selectProduct && visebleBottonProduct && selectProduct.qty_stock >= form.qty &&
+                        <button type='button' onClick={() => { addProduct() }}>Add</button>
+                    }
+                    {selectProduct && selectProduct.qty_stock < form.qty &&
+                        <h3>Produto sem Estoque!</h3>
+                    }
+                </div>
+            }
+            {/* //Order */}
+            {productList.length > 0 &&
+
+                <div id='order'>
+                    <label htmlFor='deliveryDate' >Data de entrega (DD/MM/AAAA) </label>
+                    <input id="deliveryDate" name='deliveryDate' onChange={onChange} value={form.deliveryDate}></input>
+                    <button type='submit'>Confirmar </button>
+                </div>
+            }
         </MyOrderForm>
     );
 }
