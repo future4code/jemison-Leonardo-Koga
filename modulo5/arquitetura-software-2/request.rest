@@ -1,0 +1,22 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "leo",
+    "email": "leo@email.com",
+    "password": "23432535"
+}
+###
+GET http://localhost:3003/user/all
+Content-Type: application/json
+
+###
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{ 
+    "title": "Batman",
+    "description": "Filme de heroi",
+    "year_of_release": "2020",
+    "duration_in_minutes": "60"
+}
