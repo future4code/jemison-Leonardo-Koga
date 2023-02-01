@@ -68,7 +68,7 @@ export class UserController {
 
           const userBusiness = new UserBusiness()
 
-          const autheticationData= userBusiness.getUser(token)
+          const autheticationData= await userBusiness.getUser(token)
 
           res.status(200).send(autheticationData)
         } catch(error: any) {
