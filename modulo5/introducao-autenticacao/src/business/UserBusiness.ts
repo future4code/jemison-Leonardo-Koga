@@ -134,10 +134,7 @@ export class UserBusiness {
 
         const user = await userdatbase.getUserById(getData.id)
 
-        return { 
-          id: user[0].id,
-          email: user[0].email
-         }
+        return user
     } catch (error: any) {
       throw new CustomError(400, error.message)
     }
