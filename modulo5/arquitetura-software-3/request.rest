@@ -1,0 +1,22 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "leo1",
+    "email": "leo1@email.com",
+    "password": "23432535"
+}
+###
+GET http://localhost:3003/user/all
+Content-Type: application/json
+
+###
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{ 
+    "title": "Batman 2",
+    "description": "Filme de heroi 2 ",
+    "year_of_release": "2022",
+    "duration_in_minutes": "60"
+}
