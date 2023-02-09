@@ -7,7 +7,7 @@ export class TokenGenerator {
         const token = jwt.sign(
             { id, role },
             process.env.JWT_KEY as string,
-            { expiresIn: "1h" }
+            { expiresIn: "20days" }
          )
         return token 
     }
