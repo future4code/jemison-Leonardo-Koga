@@ -2,7 +2,7 @@ import { performPurchase } from "../src/function/funcUserSaldo"
 import { User } from "../src/model/user"
 
 describe('Teste função extrato cliente', () => {
-        test("Teste maior que o valor da compra", () => {
+        test("Teste saldo maior que o valor da compra", () => {
             const user1: User = {
                 name: "Leonardo",
                 balance: 100
@@ -16,7 +16,7 @@ describe('Teste função extrato cliente', () => {
             })
         })
 
-        test("Teste igual valor da compra", () => {
+        test("Teste saldo igual valor da compra", () => {
             const user2: User = {
                 name: "Leonardo",
                 balance: 100
